@@ -13,5 +13,14 @@
       pkgs.nix
       pkgs.gzip
     ];
+
+    hooks.environment = ''
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+      if [[ "$BUILDKITE_PIPELINE_SLUG" == "nixpkgs-swh" ]]; then
+        export GITHUB_LEWO_CI_TOKEN=$(cat /run/keys/github-lewo-ci-token)
+      fi
+    '';
   };
 }

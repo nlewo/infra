@@ -72,6 +72,11 @@ in
           permissions = "0600";
         };
 
+        deployment.keys.github-lewo-ci-token = {
+          text = secrets.github-lewo-ci-token;
+          user = "buildkite-agent";
+          permissions = "0600";
+        };
       };
 
 }
